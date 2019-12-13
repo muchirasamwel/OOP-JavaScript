@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OOP Javascript</title>
+
+</head>
+<body>
+    <p>Open The console to see the results of several OOP features</p>
+</body>
+<script>
+    //creating a class for object creation
+    class Human {
+        constructor(firstname,secondname,age)
+        {
+            console.log("\n Super Class (Human) Initialized")
+            this.firstname = firstname;
+            this.secondname = secondname;
+            this.age = age;
+        }
+        show_age=function()
+        {
+            console.log("\n If you are seeing this then an object of class Human have already been created and the show age function invoked")
+            console.log("\n" +this.firstname+" "+this.secondname +" age is "+this.age );
+        }
+    }
+    //Create an instance of the Human object
+    sam=new Human("sam","kan","40");
+    //show age of the object sam of class Human.
+    sam.show_age();
+
+    //Creating an class which extends the Human class.
+    class Manager extends Human{
+
+        constructor(firstname,secondname,age,company,salary) {
+            console.log("\n This demonstrates Inheritance")
+            console.log("\n Child Class (Manager) Initialized")
+
+            super(firstname,secondname,age),
+            this.company=company;
+            this.salary=salary;
+        }
+        show_workdata=function()
+        {
+            console.log("\n If you are seeing this an object of class Manager has been created and function work data has been invoked")
+            console.log("\n "+this.firstname+" works at "+this.company+ " and receives salary amounting to "+this.salary);
+        }
+    }
+    //created an object manager1 of class Manager.
+    const manager1=new Manager("sam","kan","19","Cytonn","80,000");
+    manager1.show_workdata();
+    manager1.show_age();
+    //Encapsulation
+    function humane(name,phone){
+        console.log("\n Data encapsulation Initialized")
+        var myname=name;
+        this.phone=phone;
+        this.getname=function (){
+            console.log("\n returning name through getname method get name="+myname)
+            return myname;
+        }
+        console.log("insider name = "+name);
+    }
+    h=new humane("sam","07234567");
+    console.log("\n Trying to console my humane.myname =" +h.myname)
+    alert(h.getname());
+
+
+//demonstrating closures
+    function init(name){
+        var person=name;
+        console.log("\n Demonstrating Closures \n")
+        console.log("\n Hello I am initializing \n")
+        function sayhello()
+        {
+            console.log("\n I am using my init var to say hello");
+            console.log("\n hello "+person);
+        }
+        sayhello();
+    }
+    init('sam');
+
+//strict testing
+    function testStrict() {
+        "use strict";
+        console.log("\nUsing strict mode now ")
+        var myname;
+        myname = "samkan";  // requires myname to be declared
+        console.log("\n No error thrown yet");
+        console.log("\n trying to asign age some value ie age=80")
+        age=80;
+        console.log("This will not appear due to the strict mode error above.Thats it")
+    }
+    testStrict();
+</script>
+</html>
